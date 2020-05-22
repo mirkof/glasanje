@@ -16,6 +16,7 @@ import {
 } from "./constants";
 import {map, startWith} from 'rxjs/operators';
 import {JmbgValidator} from "./validators";
+import {EagerLoaderService} from "../eager-loader.service";
 
 interface Gender {
   label: string;
@@ -95,7 +96,7 @@ export class FormComponent {
   formDownloaded = false;
   private
 
-  constructor(private readonly fb: FormBuilder) {
+  constructor(private readonly fb: FormBuilder, private readonly eagerLoaderService: EagerLoaderService) {
     this.pollingStations$.subscribe((stations) => {
       if (stations.length === 1) {
         this.foreignVotingInfoForm.get('izbornoMesto')!.setValue(stations[0]);
@@ -124,12 +125,10 @@ export class FormComponent {
   }
 
   async generateApplication() {
-    const robotoUrl = 'assets/Roboto-Regular.ttf';
-    const fontBytes = await fetch(robotoUrl).then((res) => res.arrayBuffer());
+    const fontBytes = this.eagerLoaderService.robotoFontBytes;
     const cyrillicPattern = /^[\u0400-\u04FF]+$/;
 
-    const documentUrl = 'assets/VotingRequestDocument.pdf';
-    const existingPdfBytes = await fetch(documentUrl).then(res => res.arrayBuffer());
+    const existingPdfBytes = this.eagerLoaderService.pdfFormBytes;
 
     const pdfDoc = await PDFDocument.load(existingPdfBytes);
     pdfDoc.registerFontkit(fontkit);
