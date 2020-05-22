@@ -26,7 +26,10 @@
 Оригинални приступ је одлична идеја од претходног пројекта који можете наћи [овде](https://github.com/bdjukic/glasajDijasporo).
 
 ### _Јесте_, како да знам да не скупљате податке?
-Разумемо да сте обазриви. Лак начин да проверите да ли наш сајт (или било који други сајт) шаље ваше податке.Користите ваш интернет претраживач за бесплатну проверу. Упутсво на [енглеском је овде](https://developers.google.com/web/tools/chrome-devtools/network), а на [српском овде](https://translate.google.com/translate?sl=auto&tl=sr&u=https%3A%2F%2Fdevelopers.google.com%2Fweb%2Ftools%2Fchrome-devtools%2Fnetwork). **Уместо сајта који наводе у упутству, користите hocudaglasam.com**
+Разумемо да сте обазриви. Лак начин да проверите да ли наш сајт (или било који други сајт) шаље ваше податке је следећи:
+- Користите ваш интернет претраживач за бесплатну проверу.
+- Упутсво на [енглеском је овде](https://developers.google.com/web/tools/chrome-devtools/network), а на [српском овде](https://translate.google.com/translate?sl=auto&tl=sr&u=https%3A%2F%2Fdevelopers.google.com%2Fweb%2Ftools%2Fchrome-devtools%2Fnetwork).
+- **Уместо сајта који наводе у упутству, користите hocudaglasam.com**
 
 Такође, програмски код сајта је овде доступан свима да га анализирате. Сајт је направљен на принципима [отвореног кода](https://sr.wikipedia.org/wiki/%D0%9E%D1%82%D0%B2%D0%BE%D1%80%D0%B5%D0%BD_%D0%BA%D0%BE%D0%B4). Детаљније објашњење принципа отвореног кода на енглеском је [овде](https://en.wikipedia.org/wiki/Open_source)
 
