@@ -5,10 +5,12 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from '@angular/material/button';
 import {RouterModule} from '@angular/router';
 import {CountdownModule} from '../countdown/countdown.module';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
     LandingComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [
     CommonModule,
@@ -19,6 +21,7 @@ import {CountdownModule} from '../countdown/countdown.module';
   ],
   exports: [
     LandingComponent,
+    PrivacyPolicyComponent,
   ],
 })
 export class LandingModule {
