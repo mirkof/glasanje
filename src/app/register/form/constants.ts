@@ -1708,6 +1708,11 @@ export const STATIONS_BY_COUNTRY: Map<VotingCountry, PollingStation[]> = new Map
       labelCyr: 'Немачка',
     }, [
     {
+        embassy: 'Ambasada Srbije u Nemačkoj, Berlin',
+        embassyCyr: 'Амбасада Србије у Немачкој, Берлин',
+        email: 'info@botschaft-serbien.de',
+    },
+    {
       embassy: 'Konzulat Srbije u Nemačkoj, Diseldorf',
       embassyCyr: 'Конзулат Србије у Немачкој, Диселдорф',
       email: 'info@gksrbijedis.de',
@@ -1724,12 +1729,12 @@ export const STATIONS_BY_COUNTRY: Map<VotingCountry, PollingStation[]> = new Map
     },
     {
       embassy: 'Konzulat Srbije u Nemačkoj, Minhen',
-      embassyCyr: 'Конзулат Србије у Немачкој, Минхену',
+      embassyCyr: 'Конзулат Србије у Немачкој, Минхен',
       email: 'gk.muenchen@mfa.rs',
     },
     {
       embassy: 'Konzulat Srbije u Nemačkoj, Štutgart',
-      embassyCyr: 'Конзулат Србије у Немачкој, Стуттгарт',
+      embassyCyr: 'Конзулат Србије у Немачкој, Штутгарт',
       email: 'gk-stutgart@t-online.de',
     },
   ],
