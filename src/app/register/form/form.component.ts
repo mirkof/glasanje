@@ -128,7 +128,7 @@ export class FormComponent {
     const fontBytes = this.eagerLoaderService.robotoFontBytes;
     const cyrillicPattern = /^[\u0400-\u04FF]+$/;
 
-    const existingPdfBytes = this.eagerLoaderService.pdfFormBytes;
+    const existingPdfBytes = this.eagerLoaderService  .pdfFormBytes;
 
     const pdfDoc = await PDFDocument.load(existingPdfBytes);
     pdfDoc.registerFontkit(fontkit);
