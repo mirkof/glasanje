@@ -1739,6 +1739,7 @@ export const STATIONS_BY_COUNTRY: Map<VotingCountry, PollingStation[]> = new Map
       email: 'embassy.canberra@serbia.org.au',
     },
   ],
+  ],
   [
     {
       countryCode: 'DE',
@@ -2271,6 +2272,7 @@ export const STATIONS_BY_COUNTRY: Map<VotingCountry, PollingStation[]> = new Map
       embassyCyr: 'Амбасада Србије у Аустралији, Канбера',
       email: 'embassy.canberra@serbia.org.au',
     },
+  ],
   ],
   [
     {
