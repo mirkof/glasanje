@@ -2,20 +2,20 @@
 export enum ContentType {
   FULL_NAME,
   DATE_OF_BIRTH,
-  GENDER,
-  PARENT_NAME,
+  GENDER, /** Not needed in the new form*/
+  PARENT_NAME, /** Not needed in the new form*/
   JMBG,
-  PASSPORT_NUMBER,
+  PASSPORT_NUMBER, /** Not needed in the new form*/
   SERBIAN_ADDRESS,
-  INTERNALLY_DISPLACED_ADDRESS,
-  FOREIGN_COUNTRY,
+  INTERNALLY_DISPLACED_ADDRESS, /** Not needed in the new form*/
+  FOREIGN_COUNTRY, /** Not needed in the new form, but we might still need it for picking the right email*/
   FOREIGN_ADDRESS,
-  POLL_STATION,
-  SIGN_PLACE,
+  POLL_STATION, /** See how to use this vs the FOREIGN_COUNTRY field*/
+  SIGN_PLACE, /** Not needed in the new form*/
   SIGN_DATE,
-  SIGN_NAME,
+  SIGN_NAME, /** Not needed in the new form*/
   SIGNATURE,
-  PHONE_EMAIL,
+  PHONE_EMAIL, /** Split into two fileds in the new form: form and email*/
 }
 
 export type WriteType = 'text' | 'image';
