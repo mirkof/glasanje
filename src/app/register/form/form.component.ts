@@ -212,7 +212,7 @@ export class FormComponent {
     this.writeContent(kontaktInfo, getContentWriteSpec(ContentType.PHONE_EMAIL), firstPage, robotoFont);
 
     const pdfBytes = await pdfDoc.save();
-    download(pdfBytes, "Zahtev za glasanje 2020.pdf", "application/pdf");
+    download(pdfBytes, "Zahtev za glasanje 2022.pdf", "application/pdf");
   }
 
   sendEmail() {//на Фајфоксу десктоп Линукс није радило (није неки проблем пошто треба да људи користе на телефонима)

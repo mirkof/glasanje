@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 const robotoUrl = 'assets/Roboto-Regular.ttf';
-const documentUrl = 'assets/VotingRequestDocument.pdf';
+const documentUrl = 'assets/Zahtev-za-glasanje-u-inostranstvu-2022.pdf';
 
 /** Eagerly loads resources on app init. */
 export function eagerLoaderServiceFactory(service: EagerLoaderService) {
