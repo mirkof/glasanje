@@ -1,14 +1,14 @@
 /** Enumerates content positions for PDF. */
 export enum ContentType {
   FULL_NAME,
-  DATE_OF_BIRTH,
+  PLACE_OF_BIRTH,
   //GENDER, /** Not needed in the new form*/
   //PARENT_NAME, /** Not needed in the new form*/
   JMBG,
   //PASSPORT_NUMBER, /** Not needed in the new form*/
   SERBIAN_ADDRESS,
   //INTERNALLY_DISPLACED_ADDRESS, /** Not needed in the new form*/
-  FOREIGN_COUNTRY, /** Not needed in the new form, but we might still need it for picking the right email*/
+  //FOREIGN_COUNTRY, /** Not needed in the new form, but we might still need it for picking the right email*/
   FOREIGN_ADDRESS,
   POLL_STATION, /** See how to use this vs the FOREIGN_COUNTRY field*/
   //SIGN_PLACE, /** Not needed in the new form*/
@@ -31,39 +31,39 @@ export interface ContentWriteSpec {
 export function getContentWriteSpec(contentType: ContentType) {
   switch (contentType) {
     case ContentType.FULL_NAME:
-      return {x: 300, y: 715};
-    case ContentType.DATE_OF_BIRTH:
-      return {x: 300, y: 590};
+      return {x: 285, y: 640};
+    case ContentType.PLACE_OF_BIRTH:
+      return {x: 285, y: 610};
     // case ContentType.GENDER:
     //   return {x: 300, y: 565};
     // case ContentType.PARENT_NAME:
     //   return {x: 300, y: 544};
     case ContentType.JMBG:
-      return {x: 303, y: 525};
+      return {x: 290, y: 550};
     // case ContentType.PASSPORT_NUMBER:
     //   return {x: 300, y: 495};
     case ContentType.SERBIAN_ADDRESS:
-      return {x: 300, y: 470, isAddress: true};
+      return {x: 290, y: 500, isAddress: true};
     // case ContentType.INTERNALLY_DISPLACED_ADDRESS:
     //   return {x: 300, y: 435, isAddress: true};
-    case ContentType.FOREIGN_COUNTRY:
-      return {x: 300, y: 395};
+    // case ContentType.FOREIGN_COUNTRY:
+    //   return {x: 285, y: 395};
     case ContentType.FOREIGN_ADDRESS:
-      return {x: 300, y: 360, isAddress: true};
+      return {x: 290, y: 460, isAddress: true};
     case ContentType.POLL_STATION:
-      return {x: 300, y: 320};
+      return {x: 290, y: 425};
     // case ContentType.SIGN_PLACE:
     //   return {x: 140, y: 265};
     case ContentType.SIGN_DATE:
-      return {x: 240, y: 265};
+      return {x: 140, y: 320};
     // case ContentType.SIGN_NAME:
     //   return {x: 350, y: 215};
     case ContentType.SIGNATURE:
-      return {x: 450, y: 200};
+      return {x: 350, y: 280};
     case ContentType.PHONE:
-      return {x: 359, y: 175};
+      return {x: 340, y: 240};
     case ContentType.EMAIL:
-      return {x: 359, y: 75};
+      return {x: 340, y: 185};
   }
 
 }
@@ -2538,7 +2538,7 @@ export const STATIONS_BY_COUNTRY: Map<VotingCountry, PollingStation[]> = new Map
     {
       countryCode: 'TV',
       label: 'Tuvalu',
-      labelCyr: 'Туувалу',
+      labelCyr: 'Тувалу',
     }, [
     {
       embassy: 'Ambasada Srbije u Australiji, Kanbera',
@@ -2640,7 +2640,7 @@ export const STATIONS_BY_COUNTRY: Map<VotingCountry, PollingStation[]> = new Map
   ],
   [
     {
-      countryCode: 'UK',
+      countryCode: 'GB',
       label: 'Ujedinjeno Kraljevstvo',
       labelCyr: 'Уједињено Краљевство',
     }, [

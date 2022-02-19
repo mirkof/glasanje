@@ -47,8 +47,8 @@ export class FormComponent {
 
   readonly personalInfoForm = this.fb.group({
     'ime': this.fb.control('', [Validators.required]),
-    'datumRodjenja': this.fb.control('', [Validators.required]),
-    //'mestoRodjenja': this.fb.control('', [Validators.required]), //NO NEED FOR THIS FIELD IN THE NEW FORM
+    //'datumRodjenja': this.fb.control('', [Validators.required]), //NO NEED FOR THIS FIELD IN THE NEW FORM
+    'mestoRodjenja': this.fb.control('', [Validators.required]),
     //'pol': this.fb.control('', [Validators.required]), //NO NEED FOR THIS FIELD IN THE NEW FORM
     //'imeRoditelja': this.fb.control('', [Validators.required]), //NO NEED FOR THIS FIELD IN THE NEW FORM
     'jmbg': this.fb.control('', [
@@ -59,7 +59,7 @@ export class FormComponent {
       JmbgValidator,
     ]),
     'adresaPrebivalista': this.fb.control('', [Validators.required]),
-    'adresaPrebivalistaInternoRaseljeni': this.fb.control(''),
+    //'adresaPrebivalistaInternoRaseljeni': this.fb.control(''),  //NO NEED FOR THIS FIELD IN THE NEW FORM
     'email': this.fb.control('', [Validators.required, Validators.email]),
     'telefon': this.fb.control('', [Validators.required]),
   });
@@ -72,7 +72,7 @@ export class FormComponent {
     ]),
     */
     'drzavaPrebivalista': this.fb.control('', [Validators.required]),
-    'trenutnaLokacija': this.fb.control('', [Validators.required]),
+    //'trenutnaLokacija': this.fb.control('', [Validators.required]), //NO NEED FOR THIS FIELD IN THE NEW FORM
     'izbornoMesto': this.fb.control('', [Validators.required]),
     'adresaPrebivalista': this.fb.control('', [Validators.required]),
     'zeljenoIzbornoMesto': this.fb.control(''),
@@ -113,7 +113,8 @@ export class FormComponent {
   }
 
   getCountryFlagUrl(country: VotingCountry) {
-    return `https://www.countryflags.io/${country.countryCode}/flat/24.png`;
+    //return `https://www.countryflags.io/${country.countryCode}/flat/24.png`; //countryflags.io server is down
+    return `https://countryflagsapi.com/png/${country.countryCode}`;
   }
 
   drawComplete() {
@@ -146,10 +147,10 @@ export class FormComponent {
     this.writeContent(ime, getContentWriteSpec(ContentType.FULL_NAME), firstPage, robotoFont);
     //this.writeContent(ime, getContentWriteSpec(ContentType.SIGN_NAME), firstPage, robotoFont); //NO NEED FOR THIS FIELD IN THE UPDATED FORM
 
-    const datumRodjenja = this.getDateString(this.personalInfoForm.get('datumRodjenja').value);
-    //const mestoRodjenja = this.personalInfoForm.get('mestoRodjenja').value; //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+    //const datumRodjenja = this.getDateString(this.personalInfoForm.get('datumRodjenja').value); //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+    const mestoRodjenja = this.personalInfoForm.get('mestoRodjenja').value;
     //const datumIMesto = `${datumRodjenja} ${mestoRodjenja}`; //NO NEED FOR THIS FIELD IN THE UPDATED FORM
-    this.writeContent(datumRodjenja, getContentWriteSpec(ContentType.DATE_OF_BIRTH), firstPage, robotoFont);
+    this.writeContent(mestoRodjenja, getContentWriteSpec(ContentType.PLACE_OF_BIRTH), firstPage, robotoFont);
 
     /**
     const polKey = this.personalInfoForm.get('pol').value; //NO NEED FOR THIS FIELD IN THE UPDATED FORM
@@ -164,16 +165,16 @@ export class FormComponent {
     // Special case of incremental write.
     const jmbg = this.personalInfoForm.get('jmbg').value;
     const cifre = jmbg.split('');
-    let initialX = 303;
+    let initialX = 290;
     for (const cifra of cifre) {
       firstPage.drawText(cifra, {
         x: initialX,
-        y: 525,
+        y: 550,
         font: robotoFont,
         size: 10,
         color: rgb(0, 0, 0),
       });
-      initialX += 17.3;
+      initialX += 18;
     }
 
     /**
@@ -193,8 +194,8 @@ export class FormComponent {
     */
 
     const drzavaPrebivalista: VotingCountry = this.foreignVotingInfoForm.get('drzavaPrebivalista').value;
-    this.writeContent(isCyrillic ? drzavaPrebivalista.labelCyr : drzavaPrebivalista.label,
-      getContentWriteSpec(ContentType.FOREIGN_COUNTRY), firstPage, robotoFont);
+    // this.writeContent(isCyrillic ? drzavaPrebivalista.labelCyr : drzavaPrebivalista.label,  //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+    //  getContentWriteSpec(ContentType.FOREIGN_COUNTRY), firstPage, robotoFont);  //NO NEED FOR THIS FIELD IN THE UPDATED FORM
 
     const stranaAdresaPrebivalista = this.foreignVotingInfoForm.get('adresaPrebivalista').value;
     this.writeContent(stranaAdresaPrebivalista,
@@ -246,8 +247,8 @@ export class FormComponent {
     if (content instanceof PDFImage) {
       const contentDims = content.scale(0.25);
       page.drawImage(content, {
-        x: 450,
-        y: 200,
+        x: 350,
+        y: 280,
         width: contentDims.width,
         height: contentDims.height,
       });
