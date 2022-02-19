@@ -48,9 +48,9 @@ export class FormComponent {
   readonly personalInfoForm = this.fb.group({
     'ime': this.fb.control('', [Validators.required]),
     'datumRodjenja': this.fb.control('', [Validators.required]),
-    'mestoRodjenja': this.fb.control('', [Validators.required]),
-    'pol': this.fb.control('', [Validators.required]),
-    'imeRoditelja': this.fb.control('', [Validators.required]),
+    //'mestoRodjenja': this.fb.control('', [Validators.required]), //NO NEED FOR THIS FIELD IN THE NEW FORM
+    //'pol': this.fb.control('', [Validators.required]), //NO NEED FOR THIS FIELD IN THE NEW FORM
+    //'imeRoditelja': this.fb.control('', [Validators.required]), //NO NEED FOR THIS FIELD IN THE NEW FORM
     'jmbg': this.fb.control('', [
       Validators.required,
       Validators.pattern("^[0-9]*$"),
@@ -65,10 +65,12 @@ export class FormComponent {
   });
 
   readonly foreignVotingInfoForm = this.fb.group({
+    /**  //NO NEED FOR THIS FIELD IN THE NEW FORM
     'brojPasosa': this.fb.control('', [
       Validators.required,
       Validators.pattern("^[0-9]*$"),
     ]),
+    */
     'drzavaPrebivalista': this.fb.control('', [Validators.required]),
     'trenutnaLokacija': this.fb.control('', [Validators.required]),
     'izbornoMesto': this.fb.control('', [Validators.required]),
@@ -76,10 +78,12 @@ export class FormComponent {
     'zeljenoIzbornoMesto': this.fb.control(''),
   });
 
+  /**  //NO NEED FOR THIS FIELD IN THE NEW FORM
   readonly genderMap = new Map<string, Gender>([
     ['m', {label: 'Muški', labelCyr: 'Мушки'},],
     ['z', {label: 'Ženski', labelCyr: 'Женски'},]
   ]);
+  */
 
   readonly filteredOptions$ = this.foreignVotingInfoForm.get('drzavaPrebivalista')!.valueChanges.pipe(
     startWith(''), map((val) => this.filter(val)));
@@ -140,20 +144,22 @@ export class FormComponent {
     const ime = this.personalInfoForm.get('ime').value;
     const isCyrillic = cyrillicPattern.test(ime);
     this.writeContent(ime, getContentWriteSpec(ContentType.FULL_NAME), firstPage, robotoFont);
-    this.writeContent(ime, getContentWriteSpec(ContentType.SIGN_NAME), firstPage, robotoFont);
+    //this.writeContent(ime, getContentWriteSpec(ContentType.SIGN_NAME), firstPage, robotoFont); //NO NEED FOR THIS FIELD IN THE UPDATED FORM
 
     const datumRodjenja = this.getDateString(this.personalInfoForm.get('datumRodjenja').value);
-    const mestoRodjenja = this.personalInfoForm.get('mestoRodjenja').value;
-    const datumIMesto = `${datumRodjenja} ${mestoRodjenja}`;
-    this.writeContent(datumIMesto, getContentWriteSpec(ContentType.DATE_OF_BIRTH), firstPage, robotoFont);
+    //const mestoRodjenja = this.personalInfoForm.get('mestoRodjenja').value; //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+    //const datumIMesto = `${datumRodjenja} ${mestoRodjenja}`; //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+    this.writeContent(datumRodjenja, getContentWriteSpec(ContentType.DATE_OF_BIRTH), firstPage, robotoFont);
 
-    const polKey = this.personalInfoForm.get('pol').value;
-    const pol = this.genderMap.get(polKey);
-    this.writeContent(isCyrillic ? pol.labelCyr : pol.label,
-      getContentWriteSpec(ContentType.GENDER), firstPage, robotoFont);
+    /**
+    const polKey = this.personalInfoForm.get('pol').value; //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+    const pol = this.genderMap.get(polKey); //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+    this.writeContent(isCyrillic ? pol.labelCyr : pol.label, //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+      getContentWriteSpec(ContentType.GENDER), firstPage, robotoFont); //NO NEED FOR THIS FIELD IN THE UPDATED FORM
 
-    const imeRoditelja = this.personalInfoForm.get('imeRoditelja').value;
-    this.writeContent(imeRoditelja, getContentWriteSpec(ContentType.PARENT_NAME), firstPage, robotoFont);
+    const imeRoditelja = this.personalInfoForm.get('imeRoditelja').value; //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+    this.writeContent(imeRoditelja, getContentWriteSpec(ContentType.PARENT_NAME), firstPage, robotoFont); //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+    */
 
     // Special case of incremental write.
     const jmbg = this.personalInfoForm.get('jmbg').value;
@@ -170,17 +176,21 @@ export class FormComponent {
       initialX += 17.3;
     }
 
-    const brojPasosa = this.foreignVotingInfoForm.get('brojPasosa').value;
-    this.writeContent(brojPasosa, getContentWriteSpec(ContentType.PASSPORT_NUMBER), firstPage, robotoFont);
+    /**
+    const brojPasosa = this.foreignVotingInfoForm.get('brojPasosa').value; //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+    this.writeContent(brojPasosa, getContentWriteSpec(ContentType.PASSPORT_NUMBER), firstPage, robotoFont); //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+    */
 
     const adresaPrebivalista = this.personalInfoForm.get('adresaPrebivalista').value;
     this.writeContent(adresaPrebivalista, getContentWriteSpec(ContentType.SERBIAN_ADDRESS), firstPage, robotoFont);
 
-    const adresaPrebivalistaInternoRaseljeni = this.personalInfoForm.get('adresaPrebivalistaInternoRaseljeni').value;
+    /**
+    const adresaPrebivalistaInternoRaseljeni = this.personalInfoForm.get('adresaPrebivalistaInternoRaseljeni').value; //NO NEED FOR THIS FIELD IN THE UPDATED FORM
     if (adresaPrebivalistaInternoRaseljeni) {
       this.writeContent(adresaPrebivalistaInternoRaseljeni,
         getContentWriteSpec(ContentType.INTERNALLY_DISPLACED_ADDRESS), firstPage, robotoFont);
     }
+    */
 
     const drzavaPrebivalista: VotingCountry = this.foreignVotingInfoForm.get('drzavaPrebivalista').value;
     this.writeContent(isCyrillic ? drzavaPrebivalista.labelCyr : drzavaPrebivalista.label,
@@ -196,8 +206,10 @@ export class FormComponent {
     this.writeContent(zeljenoIzbornoMesto ? zeljenoIzbornoMesto : izbornoMestoScriptAdjusted,
       getContentWriteSpec(ContentType.POLL_STATION), firstPage, robotoFont);
 
-    const trenutnaLokacija = this.foreignVotingInfoForm.get('trenutnaLokacija').value;
-    this.writeContent(trenutnaLokacija, getContentWriteSpec(ContentType.SIGN_PLACE), firstPage, robotoFont);
+    /**
+    const trenutnaLokacija = this.foreignVotingInfoForm.get('trenutnaLokacija').value; //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+    this.writeContent(trenutnaLokacija, getContentWriteSpec(ContentType.SIGN_PLACE), firstPage, robotoFont); //NO NEED FOR THIS FIELD IN THE UPDATED FORM
+    */
 
     const datum = this.getDateString(new Date());
     this.writeContent(datum, getContentWriteSpec(ContentType.SIGN_DATE), firstPage, robotoFont);
@@ -206,10 +218,15 @@ export class FormComponent {
     this.writeContent(signatureImage, getContentWriteSpec(ContentType.SIGNATURE), firstPage, robotoFont);
 
     const telefon = this.personalInfoForm.get('telefon').value;
-    const email = this.personalInfoForm.get('email').value;
+    this.writeContent(telefon, getContentWriteSpec(ContentType.PHONE), firstPage, robotoFont);
 
-    const kontaktInfo = `${telefon} / ${email}`;
-    this.writeContent(kontaktInfo, getContentWriteSpec(ContentType.PHONE_EMAIL), firstPage, robotoFont);
+    const email = this.personalInfoForm.get('email').value;
+    this.writeContent(email, getContentWriteSpec(ContentType.EMAIL), firstPage, robotoFont);
+
+    /**
+    const kontaktInfo = `${telefon} / ${email}`; //this is split in two fields in thed new form
+    this.writeContent(kontaktInfo, getContentWriteSpec(ContentType.PHONE_EMAIL), firstPage, robotoFont); //this is split in two fields in thed new form
+    */
 
     const pdfBytes = await pdfDoc.save();
     download(pdfBytes, "Zahtev za glasanje 2022.pdf", "application/pdf");

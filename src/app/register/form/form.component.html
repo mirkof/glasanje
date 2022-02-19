@@ -38,6 +38,7 @@
           </mat-error>
         </mat-form-field>
 
+        <!--
         <mat-form-field appearance="outline">
           <mat-label>Место рођења</mat-label>
           <input formControlName="mestoRodjenja" matInput placeholder="Унесите Ваше место рођења">
@@ -46,7 +47,9 @@
             Молимо Вас, унесите место рођења
           </mat-error>
         </mat-form-field>
+        -->
 
+        <!--
         <mat-form-field appearance="outline">
           <mat-label>Пол</mat-label>
           <mat-select formControlName="pol" placeholder="Изаберите Ваш пол">
@@ -58,7 +61,9 @@
             Молимо Вас, изаберите пол
           </mat-error>
         </mat-form-field>
+        -->
 
+        <!--
         <mat-form-field appearance="outline">
           <mat-label>Име једног од родитеља</mat-label>
           <input formControlName="imeRoditelja" matInput placeholder="Унесите име једног од родитеља">
@@ -67,6 +72,7 @@
             Молимо Вас, унесите име једног од родитеља
           </mat-error>
         </mat-form-field>
+        -->
 
         <mat-form-field appearance="outline">
           <mat-label>ЈМБГ</mat-label>
@@ -98,12 +104,14 @@
           </mat-error>
         </mat-form-field>
 
+        <!--
         <mat-form-field appearance="outline">
           <mat-label>Адреса пребивалишта за интерно расељена лица</mat-label>
           <input formControlName="adresaPrebivalistaInternoRaseljeni" matInput
                  placeholder="Опционо: Адреса пребивалишта за интерно расељена лица">
           <mat-hint>Унесите ако сте интерно расељено лице. У супротном прескочите.</mat-hint>
         </mat-form-field>
+        -->
 
         <mat-form-field appearance="outline">
           <mat-label>Адреса електронске поште</mat-label>
@@ -135,6 +143,7 @@
     <mat-step [stepControl]="foreignVotingInfoForm" label="Пребивалиште и гласачко место" state="foreign">
       <form [formGroup]="foreignVotingInfoForm" class="register-form">
 
+        <!--
         <mat-form-field appearance="outline">
           <mat-label>Број пасоша</mat-label>
           <input formControlName="brojPasosa" matInput placeholder="Унесите број Вашег пасоша">
@@ -146,7 +155,9 @@
             Број пасоша може да се састоји само од цифара
           </mat-error>
         </mat-form-field>
+        -->
 
+        <!--
         <mat-form-field appearance="outline">
           <mat-label>Тренутна локација (за потпис)</mat-label>
           <input formControlName="trenutnaLokacija" matInput placeholder="Тренутна локација">
@@ -155,6 +166,7 @@
             Молимо Вас, унесите тренутну локацију
           </mat-error>
         </mat-form-field>
+        -->
 
         <mat-form-field appearance="outline">
           <mat-label>Држава пребивалишта</mat-label>
@@ -231,7 +243,7 @@
         <li>Преузмите формулар кликом на дугме</li>
         <li>
           Пошаљите пријаву амбасади кликом на дугме и <b>приложите слику пасоша и формулар у емаил (attachment).</b>
-          Ако дугме не ради пошаљите ручно на {{foreignVotingInfoForm.get('izbornoMesto')?.value.email}}
+          Ако дугме за слање емаил-а не ради, пошаљите ручно на {{foreignVotingInfoForm.get('izbornoMesto')?.value.email}}
         </li>
       </ol>
 

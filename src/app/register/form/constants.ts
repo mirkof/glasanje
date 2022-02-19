@@ -2,20 +2,21 @@
 export enum ContentType {
   FULL_NAME,
   DATE_OF_BIRTH,
-  GENDER, /** Not needed in the new form*/
-  PARENT_NAME, /** Not needed in the new form*/
+  //GENDER, /** Not needed in the new form*/
+  //PARENT_NAME, /** Not needed in the new form*/
   JMBG,
-  PASSPORT_NUMBER, /** Not needed in the new form*/
+  //PASSPORT_NUMBER, /** Not needed in the new form*/
   SERBIAN_ADDRESS,
-  INTERNALLY_DISPLACED_ADDRESS, /** Not needed in the new form*/
+  //INTERNALLY_DISPLACED_ADDRESS, /** Not needed in the new form*/
   FOREIGN_COUNTRY, /** Not needed in the new form, but we might still need it for picking the right email*/
   FOREIGN_ADDRESS,
   POLL_STATION, /** See how to use this vs the FOREIGN_COUNTRY field*/
-  SIGN_PLACE, /** Not needed in the new form*/
+  //SIGN_PLACE, /** Not needed in the new form*/
   SIGN_DATE,
-  SIGN_NAME, /** Not needed in the new form*/
+  //SIGN_NAME, /** Not needed in the new form*/
   SIGNATURE,
-  PHONE_EMAIL, /** Split into two fileds in the new form: form and email*/
+  PHONE, /** Split into two fileds in the new form: form and email*/
+  EMAIL,
 }
 
 export type WriteType = 'text' | 'image';
@@ -30,37 +31,39 @@ export interface ContentWriteSpec {
 export function getContentWriteSpec(contentType: ContentType) {
   switch (contentType) {
     case ContentType.FULL_NAME:
-      return {x: 300, y: 615};
+      return {x: 300, y: 715};
     case ContentType.DATE_OF_BIRTH:
       return {x: 300, y: 590};
-    case ContentType.GENDER:
-      return {x: 300, y: 565};
-    case ContentType.PARENT_NAME:
-      return {x: 300, y: 544};
+    // case ContentType.GENDER:
+    //   return {x: 300, y: 565};
+    // case ContentType.PARENT_NAME:
+    //   return {x: 300, y: 544};
     case ContentType.JMBG:
       return {x: 303, y: 525};
-    case ContentType.PASSPORT_NUMBER:
-      return {x: 300, y: 495};
+    // case ContentType.PASSPORT_NUMBER:
+    //   return {x: 300, y: 495};
     case ContentType.SERBIAN_ADDRESS:
       return {x: 300, y: 470, isAddress: true};
-    case ContentType.INTERNALLY_DISPLACED_ADDRESS:
-      return {x: 300, y: 435, isAddress: true};
+    // case ContentType.INTERNALLY_DISPLACED_ADDRESS:
+    //   return {x: 300, y: 435, isAddress: true};
     case ContentType.FOREIGN_COUNTRY:
       return {x: 300, y: 395};
     case ContentType.FOREIGN_ADDRESS:
       return {x: 300, y: 360, isAddress: true};
     case ContentType.POLL_STATION:
       return {x: 300, y: 320};
-    case ContentType.SIGN_PLACE:
-      return {x: 140, y: 265};
+    // case ContentType.SIGN_PLACE:
+    //   return {x: 140, y: 265};
     case ContentType.SIGN_DATE:
       return {x: 240, y: 265};
-    case ContentType.SIGN_NAME:
-      return {x: 350, y: 215};
+    // case ContentType.SIGN_NAME:
+    //   return {x: 350, y: 215};
     case ContentType.SIGNATURE:
       return {x: 450, y: 200};
-    case ContentType.PHONE_EMAIL:
+    case ContentType.PHONE:
       return {x: 359, y: 175};
+    case ContentType.EMAIL:
+      return {x: 359, y: 75};
   }
 
 }
